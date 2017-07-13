@@ -5,7 +5,7 @@ import java.util.Enumeration;
 import java.util.List;
 import javax.swing.tree.TreeNode;
 
-public class Component implements TreeNode, Observable, Visitable {
+public class Component implements TreeNode{
 
     protected String name;
     protected Group parentComponent;
@@ -93,41 +93,5 @@ public class Component implements TreeNode, Observable, Visitable {
     public int getChildCount() {
         return this.isLeaf() ? 0 : this.children.size();
     }
-
-    @Override
-    public TreeNode getParent() {
-        return this.parentComponent;
-    }
-
-    @Override
-    public int getIndex(TreeNode node) {
-        return -1;
-    }
-
-    @Override
-    public boolean getAllowsChildren() {
-        return (!(this instanceof User)); 
-    }
-
-    @Override
-    public boolean isLeaf() {
-        return this.children == null;
-    }
-
-    @Override
-    public Enumeration children() {
-        return this.isLeaf() ? null : (Enumeration) this.children;
-    }
-
-	@Override
-	public void accept(Visitor v) {
-		// TODO Auto-generated method stub
-		
-	}
-    
-}
-
-	
-	
 
 }
