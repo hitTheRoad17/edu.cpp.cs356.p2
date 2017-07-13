@@ -1,6 +1,6 @@
 package edu.cpp.cs356;
 
-public class Group implements Component{
+public class Group {
 	
 	
 
