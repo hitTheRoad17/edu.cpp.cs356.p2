@@ -1,36 +1,33 @@
 package edu.cpp.cs356;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class TweetVisitor implements Visitor {
 
-	private int totalTweets;
-	private int positiveTweets;
+    private int totalTweets;
+    private int positiveTweets;
 
-	public int getTotalTweets() {
-		return totalTweets;
-	}
+    public int getTotalTweets() {
+        return totalTweets;
+    }
 
-	public int calculatePencentage() throws IllegalArgumentException {
-		if (totalTweets == 0) {
-			throw new IllegalArgumentException("Field 'tweets' is 0");
-		}
-		return (int) Math.ceil(((double) positiveTweets / totalTweets) * 100);
-	}
+    public double calcPercentage() {
+        if (totalTweets == 0) {
+            return 0;
+        }
 
-	public void visit(User u) {
-		ArrayList<Tweet> userTweets = u.getTweets();
-		totalTweets += userTweets.size();
+        return (double) positiveTweets / totalTweets;
+    }
 
-		for (Tweet t : userTweets) {
-			if (t.isPositive()) {
-				this.positiveTweets++;
-			}
-		}
-	}
+    public void visit(User u) {
+        List<Tweet> tweets = u.getTweets();
+        totalTweets += tweets.size();
 
-	public void visit(Group g) {
-
-	}
+        for (Tweet t : tweets) {
+            if (t.isPositive()) {
+                positiveTweets++;
+            }
+        }
+    }
 
 }
