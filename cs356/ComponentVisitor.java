@@ -1,6 +1,6 @@
 package edu.cpp.cs356;
 
-public class ComponentVisitor implements Visitor{
+public class ComponentVisitor implements Visitor {
 
     private int totalUsers;
     private int totalGroups;
@@ -16,6 +16,10 @@ public class ComponentVisitor implements Visitor{
 
     public void visit(User u) {
         totalUsers++;
+    }
+
+    public void visit(Group g) {
+        totalGroups++;
     }
 
 }

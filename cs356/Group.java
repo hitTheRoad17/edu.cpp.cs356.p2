@@ -1,18 +1,17 @@
 package edu.cpp.cs356;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Group {
-
-    private String id;
-    private Group parent;
-    private List<Group> children;
+public class Group extends Component {
 
     Group(String str, Group g) {
-        id = str;
+        setID(str);
         parent = g;
         children = new ArrayList<>();
+    }
+
+    public void accept(Visitor v) {
+        v.visit(this);
     }
 
 }
