@@ -30,4 +30,9 @@ public class TweetVisitor implements Visitor {
         }
     }
 
+    @Override
+    public void visit(Group g) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

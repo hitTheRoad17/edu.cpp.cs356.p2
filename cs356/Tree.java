@@ -9,9 +9,9 @@ public class Tree {
     private TreeNode tn;
 
     Tree() {
-
-        Group root = new Group("Root", null);
-
+        Component root = new Group("Root", null);
+        tn = root;
+        jt = new JTree(tn);
     }
 
 }
