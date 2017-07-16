@@ -1,5 +1,6 @@
 package edu.cpp.cs356;
 
+import java.awt.Frame;
 import javax.swing.tree.DefaultTreeModel;
 
 public class AdminPanel extends javax.swing.JFrame {
@@ -173,7 +174,7 @@ public class AdminPanel extends javax.swing.JFrame {
     // add user
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         DefaultTreeModel dtm = (DefaultTreeModel) userTree.getModel();
-        Component root = (Group) dtm.getRoot();
+        Component root = (Component) dtm.getRoot();
         Component selectedNode = (Component) userTree.getLastSelectedPathComponent();
 
         if (!userId.getText().trim().equals("")) {
@@ -228,8 +229,10 @@ public class AdminPanel extends javax.swing.JFrame {
 
     // open user view
     private void userViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userViewActionPerformed
-
-
+        Component node = (Component) userTree.getLastSelectedPathComponent();
+        if (node != null && node instanceof User) {
+            Frame userFrame = new UserView();
+        }
     }//GEN-LAST:event_userViewActionPerformed
 
     // show user total
@@ -266,9 +269,9 @@ public class AdminPanel extends javax.swing.JFrame {
     private void traverse(Component c, Visitor v) {
         c.accept(v);
         if (!c.isLeaf()) {
-            for (Component cpt : c.children) {
+            c.children.forEach((cpt) -> {
                 traverse(cpt, v);
-            }
+            });
         }
     }
 
