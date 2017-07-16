@@ -2,11 +2,15 @@ package edu.cpp.cs356;
 
 public class Tweet {
 
-    private String tweetMessage;
+    private String tweetMsg;
 
     Tweet(String str) {
-        tweetMessage = str;
+        tweetMsg = str;
         isPositive();
+    }
+    
+    public String getTweetMsg() {
+        return tweetMsg;
     }
 
     public boolean isPositive() {
@@ -14,7 +18,7 @@ public class Tweet {
             "awesome", "wonderful", "amazing", "positive"};
 
         for (String word : positiveWords) {
-            if (tweetMessage.toLowerCase().contains(word)) {
+            if (tweetMsg.toLowerCase().contains(word)) {
                 return true;
             }
         }

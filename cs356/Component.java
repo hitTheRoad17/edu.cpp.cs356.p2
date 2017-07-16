@@ -11,7 +11,7 @@ public abstract class Component implements Observable, Visitable, MutableTreeNod
     private List<Observer> observers;
     private String id;
 
-    protected List<Group> children;
+    protected List<Component> children;
     protected Group parent;
 
     Component() {

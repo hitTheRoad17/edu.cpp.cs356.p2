@@ -7,7 +7,6 @@ public class ComponentVisitor implements Visitor {
 
     public int getTotalUsers() {
         return totalUsers;
-
     }
 
     public int getTotalGroups() {
