@@ -5,7 +5,7 @@ import javax.swing.tree.DefaultTreeModel;
 
 public class AdminPanel extends javax.swing.JFrame {
 
-    private static AdminPanel instance;
+    static AdminPanel instance;
 
     static AdminPanel getInstance() {
         if (instance == null) {
@@ -202,7 +202,7 @@ public class AdminPanel extends javax.swing.JFrame {
     // add group
     private void groupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupActionPerformed
         DefaultTreeModel dtm = (DefaultTreeModel) userTree.getModel();
-        Component root = (Group) dtm.getRoot();
+        Component root = (Component) dtm.getRoot();
         Component selectedNode = (Component) userTree.getLastSelectedPathComponent();
 
         if (!groupId.getText().trim().equals("")) {
@@ -261,7 +261,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
     private Visitor traverse(Visitor v) {
         DefaultTreeModel dtm = (DefaultTreeModel) userTree.getModel();
-        Component root = (Group) dtm.getRoot();
+        Component root = (Component) dtm.getRoot();
         traverse(root, v);
         return v;
     }

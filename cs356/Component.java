@@ -116,7 +116,7 @@ public abstract class Component implements Observable, Visitable, MutableTreeNod
 
     @Override
     public Enumeration children() {
-        return this.isLeaf() ? null : (Enumeration) this.children;
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
 }
