@@ -12,18 +12,14 @@ public class TweetVisitor implements Visitor {
     }
 
     public double calcPercentage() {
-        if (totalTweets == 0) {
-            return 0;
-        }
-
         return (double) positiveTweets / totalTweets;
     }
 
+    @Override
     public void visit(User u) {
-        List<Tweet> tweets = u.getTweets();
-        totalTweets += tweets.size();
-
-        for (Tweet t : tweets) {
+        List<Tweet> tl = u.getTweets();
+        totalTweets += tl.size();
+        for (Tweet t : tl) {
             if (t.isPositive()) {
                 positiveTweets++;
             }
@@ -32,7 +28,7 @@ public class TweetVisitor implements Visitor {
 
     @Override
     public void visit(Group g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

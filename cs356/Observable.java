@@ -6,6 +6,6 @@ public interface Observable {
 
     void detach(Observer o);
 
-    void notifyObservers();
+    void notifyObserver();
 
 }

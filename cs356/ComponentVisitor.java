@@ -13,10 +13,12 @@ public class ComponentVisitor implements Visitor {
         return totalGroups;
     }
 
+    @Override
     public void visit(User u) {
         totalUsers++;
     }
 
+    @Override
     public void visit(Group g) {
         totalGroups++;
     }

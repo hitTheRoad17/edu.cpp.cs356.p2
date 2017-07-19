@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.7" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -25,32 +25,32 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="266" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="199" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="groupId" min="-2" pref="157" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="group" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="userId" min="-2" pref="157" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="user" max="32767" attributes="0"/>
-                  </Group>
                   <Component id="userView" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="totalMessage" min="-2" pref="196" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="percentage" pref="190" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="totalMsg" pref="171" max="32767" attributes="0"/>
-                          <Component id="totalUser" max="32767" attributes="0"/>
+                      <Component id="totalUser" min="-2" pref="196" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="totalGroup" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="userId" min="-2" pref="199" max="-2" attributes="0"/>
+                          <Component id="groupId" min="-2" pref="199" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="positivePercentage" alignment="0" pref="215" max="32767" attributes="0"/>
-                          <Component id="totalGroup" max="32767" attributes="0"/>
+                          <Component id="user" max="32767" attributes="0"/>
+                          <Component id="group" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane3" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -61,34 +61,33 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="user" min="-2" pref="56" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="group" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
-                                  <Component id="groupId" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="userId" min="-2" pref="56" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="userId" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="user" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="userView" min="-2" pref="66" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="groupId" max="32767" attributes="0"/>
+                          <Component id="group" pref="41" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="119" max="-2" attributes="0"/>
+                      <Component id="userView" min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="93" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="totalUser" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
-                          <Component id="totalGroup" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="totalUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="totalGroup" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="totalMsg" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
-                          <Component id="positivePercentage" alignment="3" min="-2" pref="52" max="-2" attributes="0"/>
+                          <Component id="totalMessage" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="percentage" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -103,27 +102,30 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTree" name="userTree">
-          <Properties>
-            <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-              <TreeModel code=""/>
-            </Property>
-          </Properties>
+        <Component class="javax.swing.JTree" name="componentTree">
+          <Events>
+            <EventHandler event="componentAdded" listener="java.awt.event.ContainerListener" parameters="java.awt.event.ContainerEvent" handler="componentTreeComponentAdded"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="userId">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Enter User ID"/>
+        <Property name="text" type="java.lang.String" value="User ID"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userIdActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="groupId">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Group ID"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="user">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add User"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="group">
       <Properties>
@@ -133,17 +135,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="groupActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="groupId">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Enter Group ID"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="userView">
       <Properties>
         <Property name="text" type="java.lang.String" value="Open User View"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="totalMessage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Show Messages Total"/>
+      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userViewActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="totalMessageActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="totalUser">
@@ -162,30 +164,26 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="totalGroupActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="totalMsg">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Show Messages Total"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="totalMsgActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="positivePercentage">
+    <Component class="javax.swing.JButton" name="percentage">
       <Properties>
         <Property name="text" type="java.lang.String" value="Show Positive Percentage"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="positivePercentageActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="percentageActionPerformed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextPane" name="message">
+        <Component class="javax.swing.JTextArea" name="message">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
