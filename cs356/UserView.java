@@ -1,8 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.cpp.cs356;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
 
+/**
+ *
+ * @author hye
+ */
 public class UserView extends javax.swing.JFrame {
 
     private User user;
@@ -10,11 +18,8 @@ public class UserView extends javax.swing.JFrame {
     /**
      * Creates new form UserView
      */
-    UserView() {
+    public UserView() {
         initComponents();
-
-        setVisible(true);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -28,12 +33,12 @@ public class UserView extends javax.swing.JFrame {
 
         userId = new javax.swing.JTextField();
         followUser = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        following = new javax.swing.JList<>();
-        tweetMessage = new javax.swing.JTextField();
+        tweetMsg = new javax.swing.JTextField();
         postTweet = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        newsFeed = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        following = new javax.swing.JList();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        newsFeed = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,14 +51,7 @@ public class UserView extends javax.swing.JFrame {
             }
         });
 
-        following.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "List View (Current Following)" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(following);
-
-        tweetMessage.setText("Tweet Message");
+        tweetMsg.setText("Tweet Message");
 
         postTweet.setText("Post Tweet");
         postTweet.addActionListener(new java.awt.event.ActionListener() {
@@ -62,12 +60,19 @@ public class UserView extends javax.swing.JFrame {
             }
         });
 
-        newsFeed.setModel(new javax.swing.AbstractListModel<String>() {
+        following.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "List View (Current Following)" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(following);
+
+        newsFeed.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "List View (News Feed)" };
             public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            public Object getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(newsFeed);
+        jScrollPane4.setViewportView(newsFeed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,14 +81,14 @@ public class UserView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane4)
+                    .addComponent(jScrollPane3)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tweetMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tweetMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(postTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
+                        .addComponent(postTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(userId, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userId, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(followUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -93,49 +98,45 @@ public class UserView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(followUser, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(followUser, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                     .addComponent(userId))
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tweetMsg)
+                    .addComponent(postTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tweetMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(postTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void postTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postTweetActionPerformed
-        DefaultListModel dlm = (DefaultListModel) newsFeed.getModel();
-
-        if (!tweetMessage.getText().trim().equals("")) {
-            Tweet t = user.postTweet(tweetMessage.getText().trim());
-            dlm.addElement(t.getTweetMsg());
-        }
-    }//GEN-LAST:event_postTweetActionPerformed
-
     private void followUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_followUserActionPerformed
-        DefaultListModel dlm = (DefaultListModel) following.getModel();
-
-        if (!userId.getText().trim().equals("")) {
-            user.follow(userId.getText().trim());
-            dlm.addElement(userId.getText().trim());
+        DefaultListModel dlm = (DefaultListModel) newsFeed.getModel();
+        if (!userId.getText().equals("")) {
+            user.follow(userId.getText());
         }
     }//GEN-LAST:event_followUserActionPerformed
 
+    private void postTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postTweetActionPerformed
+        DefaultListModel dlm = (DefaultListModel) newsFeed.getModel();
+        if (!tweetMsg.getText().equals("")) {
+            Tweet t = user.postTweet(tweetMsg.getText());
+        }
+    }//GEN-LAST:event_postTweetActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton followUser;
-    private javax.swing.JList<String> following;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList<String> newsFeed;
+    private javax.swing.JList following;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JList newsFeed;
     private javax.swing.JButton postTweet;
-    private javax.swing.JTextField tweetMessage;
+    private javax.swing.JTextField tweetMsg;
     private javax.swing.JTextField userId;
     // End of variables declaration//GEN-END:variables
+
 }
