@@ -10,17 +10,19 @@ public abstract class Component implements Visitable, Observable, Observer {
     private DefaultMutableTreeNode node;
 
     private String id;
-    private List<Observable> subjects;
+    private long creationTime;
 
+    private List<Observable> subjects;
     private List<Observer> observers;
 
     Component(String str) {
         node = null;
 
         id = str;
+        creationTime = System.currentTimeMillis();
+
         subjects = new ArrayList<>();
         observers = new ArrayList<>();
-
     }
 
     public DefaultMutableTreeNode getNode() {
@@ -37,6 +39,10 @@ public abstract class Component implements Visitable, Observable, Observer {
 
     public void setId(String str) {
         id = str;
+    }
+
+    public long getCreationTime() {
+        return creationTime;
     }
 
     public List<Observable> getSubjects() {
@@ -73,9 +79,9 @@ public abstract class Component implements Visitable, Observable, Observer {
 
     @Override
     public void notifyObserver() {
-        getObservers().forEach((o) -> {
+        for (Observer o : getObservers()) {
             o.update(this);
-        });
+        }
     }
 
     public boolean containObserver(Observer o) {
@@ -84,7 +90,7 @@ public abstract class Component implements Visitable, Observable, Observer {
 
     @Override
     public void update(Observable o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

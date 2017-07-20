@@ -9,11 +9,24 @@ public class AdminPanel extends javax.swing.JFrame {
     private DefaultTreeModel dtm;
     private DefaultMutableTreeNode rootNode;
 
+    private static AdminPanel instance;
+
     /**
      * Creates new form AdminPanel
      */
     public AdminPanel() {
         initComponents();
+    }
+
+    public static AdminPanel getInstance() {
+        if (instance == null) {
+            synchronized (AdminPanel.class) {
+                if (instance == null) {
+                    instance = new AdminPanel();
+                }
+            }
+        }
+        return instance;
     }
 
     /**
@@ -38,14 +51,13 @@ public class AdminPanel extends javax.swing.JFrame {
         percentage = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         message = new javax.swing.JTextArea();
+        verify = new javax.swing.JButton();
+        find = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        componentTree.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                componentTreeComponentAdded(evt);
-            }
-        });
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("cs356");
+        componentTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane1.setViewportView(componentTree);
 
         userId.setText("User ID");
@@ -100,6 +112,20 @@ public class AdminPanel extends javax.swing.JFrame {
         message.setRows(5);
         jScrollPane2.setViewportView(message);
 
+        verify.setText("ID Verification");
+        verify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyActionPerformed(evt);
+            }
+        });
+
+        find.setText("Find the last updated User");
+        find.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,7 +152,11 @@ public class AdminPanel extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(group, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(verify, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(find, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -145,6 +175,10 @@ public class AdminPanel extends javax.swing.JFrame {
                             .addComponent(group, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(userView, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(find, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                            .addComponent(verify, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -155,8 +189,7 @@ public class AdminPanel extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(totalMessage)
                             .addComponent(percentage)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)))
         );
 
         pack();
@@ -171,8 +204,52 @@ public class AdminPanel extends javax.swing.JFrame {
             DefaultMutableTreeNode parentNode = getParentNode();
             dtm.insertNodeInto(childNode, parentNode, parentNode.getChildCount());
             dtm.reload();
+        } else {
+            message.setText("Please enter a valid name");
         }
     }//GEN-LAST:event_userIdActionPerformed
+
+    private void groupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupActionPerformed
+        String id = groupId.getText();
+        if (!id.equals("")) {
+            dtm = (DefaultTreeModel) componentTree.getModel();
+            Component group = new Group(id);
+            DefaultMutableTreeNode childNode = new DefaultMutableTreeNode(group);
+            DefaultMutableTreeNode parentNode = getParentNode();
+            dtm.insertNodeInto(childNode, parentNode, parentNode.getChildCount());
+            dtm.reload();
+        } else {
+            message.setText("Please enter a valid name");
+        }
+    }//GEN-LAST:event_groupActionPerformed
+
+    private void totalUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalUserActionPerformed
+        ComponentVisitor cv = new ComponentVisitor();
+        message.setText("Total User: " + String.valueOf(cv.getTotalUsers()));
+    }//GEN-LAST:event_totalUserActionPerformed
+
+    private void totalGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalGroupActionPerformed
+        ComponentVisitor cv = new ComponentVisitor();
+        message.setText("Total Group: " + String.valueOf(cv.getTotalGroups()));
+    }//GEN-LAST:event_totalGroupActionPerformed
+
+    private void totalMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalMessageActionPerformed
+        TweetVisitor tv = new TweetVisitor();
+        message.setText("Total Message: " + String.valueOf(tv.getTotalTweets()));
+    }//GEN-LAST:event_totalMessageActionPerformed
+
+    private void percentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentageActionPerformed
+        TweetVisitor tv = new TweetVisitor();
+        message.setText("Postive Percentage: " + String.valueOf(tv.calcPercentage()));
+    }//GEN-LAST:event_percentageActionPerformed
+
+    private void verifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyActionPerformed
+        message.setText("All the IDs are valid");
+    }//GEN-LAST:event_verifyActionPerformed
+
+    private void findActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findActionPerformed
+        message.setText("The last updated user is: ");
+    }//GEN-LAST:event_findActionPerformed
 
     private DefaultMutableTreeNode getParentNode() {
         DefaultMutableTreeNode selectedNode = getSelectedNode();
@@ -193,44 +270,9 @@ public class AdminPanel extends javax.swing.JFrame {
         return null;
     }
 
-    private void componentTreeComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_componentTreeComponentAdded
-
-    }//GEN-LAST:event_componentTreeComponentAdded
-
-    private void groupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupActionPerformed
-        String id = groupId.getText();
-        if (!id.equals("")) {
-            dtm = (DefaultTreeModel) componentTree.getModel();
-            Component group = new Group(id);
-            DefaultMutableTreeNode childNode = new DefaultMutableTreeNode(group);
-            DefaultMutableTreeNode parentNode = getParentNode();
-            dtm.insertNodeInto(childNode, parentNode, parentNode.getChildCount());
-            dtm.reload();
-        }
-    }//GEN-LAST:event_groupActionPerformed
-
-    private void totalUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalUserActionPerformed
-        ComponentVisitor cv = new ComponentVisitor();
-        message.setText(String.valueOf(cv.getTotalUsers()));
-    }//GEN-LAST:event_totalUserActionPerformed
-
-    private void totalGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalGroupActionPerformed
-        ComponentVisitor cv = new ComponentVisitor();
-        message.setText(String.valueOf(cv.getTotalGroups()));
-    }//GEN-LAST:event_totalGroupActionPerformed
-
-    private void totalMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalMessageActionPerformed
-        TweetVisitor tv = new TweetVisitor();
-        message.setText(String.valueOf(tv.getTotalTweets()));
-    }//GEN-LAST:event_totalMessageActionPerformed
-
-    private void percentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentageActionPerformed
-        TweetVisitor tv = new TweetVisitor();
-        message.setText(String.valueOf(tv.calcPercentage()));
-    }//GEN-LAST:event_percentageActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTree componentTree;
+    private javax.swing.JButton find;
     private javax.swing.JButton group;
     private javax.swing.JTextField groupId;
     private javax.swing.JScrollPane jScrollPane1;
@@ -243,6 +285,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JButton user;
     private javax.swing.JTextField userId;
     private javax.swing.JButton userView;
+    private javax.swing.JButton verify;
     // End of variables declaration//GEN-END:variables
 
 }

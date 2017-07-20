@@ -11,8 +11,8 @@ public class TweetVisitor implements Visitor {
         return totalTweets;
     }
 
-    public double calcPercentage() {
-        return (double) positiveTweets / totalTweets;
+    public int calcPercentage() {
+        return (int)Math.ceil(((double)positiveTweets / totalTweets) * 100);
     }
 
     @Override
