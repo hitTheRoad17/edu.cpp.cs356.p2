@@ -6,7 +6,9 @@ public class UserView extends javax.swing.JFrame {
 
     private User user;
 
-
+    /**
+     * Creates new form UserView
+     */
     public UserView() {
         initComponents();
     }
